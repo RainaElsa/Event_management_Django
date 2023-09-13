@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css'%}">
+<link href="https://fonts.googleapis.com/css2?family=Alata&family=Carter+One&family=Concert+One&family=Kaushan+Script&family=Passion+One&family=Spectral:ital,wght@1,200&display=swap" rel="stylesheet">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Registration Site</title>
+</head>
+<body>
+    <header>
+        <img id="logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhiBz7JWHYGdOcbYx689gINJzUvhDaqEf7Ng&usqp=CAU" alt="Event"/> 
+        <div id="nav">
+            <a class="links" href="">Home </a>
+            <a class="links" href="">Login </a>
+            <a class="links" href="">SignUp</a> 
+        </div>
+    </header>
+    <section id ="events">
+        {% for event in events %}
+        <div class="eventCard">
+            <h2>{{event.event_title}}</h2>
+            <p class="eventContent">{{event.event_location}}</p>
+            <p class="eventContent">{{event.date}}</p>
+            <a class="detailLinks" href="{% url 'eventdetail' event.pk %}">Details</a> 
+        </div>
+        {% endfor %}
+        <!-- <div class="eventCard">
+            <h2>Event name</h2>
+            <p class="eventContent">location</p>
+            <p class="eventContent">date and time</p>
+            <a class="detailLinks" href="/details.html">Details</a> 
+        </div> -->
+    </section>
+    <footer>
+        <p>&copy;2013 Event Registration system</p>
+    </footer>
+
+</body>
+</html>

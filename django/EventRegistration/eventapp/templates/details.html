@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css'%}">
+<html lang="en">
+<link href="https://fonts.googleapis.com/css2?family=Alata&family=Carter+One&family=Concert+One&family=Kaushan+Script&family=Passion+One&family=Spectral:ital,wght@1,200&display=swap" rel="stylesheet">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Registration Site</title>
+</head>
+<body>
+    <header>
+        <img id="logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhiBz7JWHYGdOcbYx689gINJzUvhDaqEf7Ng&usqp=CAU" alt="Event"/> 
+        <div id="nav">
+            <a class="links" href="">Home </a>
+            <a class="links" href="">Login </a>
+            <a class="links" href="">SignUp</a> 
+        </div>
+    </header>
+    <section id="detailsPage">
+        
+        <h3>{{event.event_title}}</h3>
+        <p>{{event.date}}</p>
+        <p>{{event.description}} </p>
+        <div id="eventReg">
+            <h3>Apply for this event</h3>
+            <form action="{% url 'eventdetail' event.pk %}" method="POST" >
+                {% csrf_token %}
+                {{form.as_p}}
+                
+                <input id="submitButton" class="formElts" type="submit">
+            </form>
+        </div>
+    </section>
+    <footer>
+        <p>&copy;2013 Event Registration system</p>
+    </footer>
+
+    
+</body>
+</html>
